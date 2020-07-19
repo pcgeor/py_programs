@@ -42,7 +42,8 @@ class TestCaseToCheckGivenStringIsPalindrome(unittest.TestCase):
             ispalindrome = True
         else:
             ispalindrome = False
-        alphabetcheck = re.compile('[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]')
+        alphabetcheck = re.compile(
+            '[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]')
         if alphabetcheck.search(palindromestring) is None:
             noAlphabets = True
         else:
@@ -57,17 +58,64 @@ class TestCaseToCheckGivenStringIsPalindrome(unittest.TestCase):
             ispalindrome = True
         else:
             ispalindrome = False
-        nonumberandnospecialcharactercheck = re.compile('[0123456789@_!#$%^&*()<>?/\|}{~:]')
+        nonumberandnospecialcharactercheck = re.compile(
+            '[0123456789@_!#$%^&*()<>?/\|}{~:]')
         if nonumberandnospecialcharactercheck.search(palindromestring) is None:
             noNumberandnoSpecialCharacter = True
         else:
             noNumberandnoSpecialCharacter = False
         self.assertTrue(ispalindrome & noNumberandnoSpecialCharacter)
 
+
+
+    def test_IsWordLessthan0(self):
+        formedpalindrome = PalindromeClass.Palindrome(-1, 6, 0, 0)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)    
+
+    def test_IsWordEqual0(self):
+        formedpalindrome = PalindromeClass.Palindrome(0, 0, 0, 0)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)    
+
     def test_IsWordGreaterthan20(self):
-        formedpalindrome = PalindromeClass.Palindrome(21, 6, 0, 0)
+        formedpalindrome = PalindromeClass.Palindrome(21, 10, 10, 1)
         palindromestring = formedpalindrome.formpalindrome()
         self.assertFalse(palindromestring)
-       
+
+
+    def test_AlphabetLessthan0(self):
+        formedpalindrome = PalindromeClass.Palindrome(10, -5, 10, 5)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)   
+
+    def test_AlphabetGreaterthanWordLength(self):
+        formedpalindrome = PalindromeClass.Palindrome(10, 11, 0, 0)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)   
+
+
+    def test_NumberLessthan0(self):
+        formedpalindrome = PalindromeClass.Palindrome(10, 6, -4, 8)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)   
+
+    def test_NumberGreaterthanWordLength(self):
+        formedpalindrome = PalindromeClass.Palindrome(10, 0, 11, 0)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)   
+
+
+    def test_SpecialCharLessthan0(self):
+        formedpalindrome = PalindromeClass.Palindrome(10, 6, 7, -3)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)   
+
+    def test_SpecialCharGreaterThanWordLength(self):
+        formedpalindrome = PalindromeClass.Palindrome(10, 0, 0, 11)
+        palindromestring = formedpalindrome.formpalindrome()
+        self.assertFalse(palindromestring)   
+
+
 if __name__ == '__main__':
     unittest.main()
