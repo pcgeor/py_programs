@@ -1,65 +1,65 @@
 # Function to form a palindrome from user input of count
-def FormPalindrome(w, x, y, z):
-    """ Function Forms a palindrome (where its word length 'w')
+def formpalindrome(wordlength, alphabetlength, numberlength, specialcharlength):
+    """ Function returns a palindrome (where its word length 'w')
         which has 'x' number of alphabets,
         'y' number of digits & 'z' number of special characters 
         where w, x, y and z can be input from the userFunction to form a palindrome 
     """
     maxlength = 20
-    oddcount = (x%2 + y%2 + z%2)
+    oddcount = (alphabetlength % 2) + (numberlength % 2) + (specialcharlength % 2)
     #print("Odd count = ", oddcount)
     
-    # validation of the inputs
+    #Validation of the inputs
   
-    if (w > maxlength):
-        print(w, "Word length exceeds max allowed length : ", maxlength)
+    if wordlength > maxlength:
+        print(wordlength, "Word length exceeds max allowed length : ", maxlength)
         exit(1)
 
-    if (w < 0):
-        print(w, "Word length is less than 0")
+    if wordlength < 0:
+        print(wordlength, "Word length is less than 0")
         exit(1)
 
-    if (x > w):
-        print(x, "Albhabets more than word length: ", w)
+    if alphabetlength > wordlength:
+        print(alphabetlength, "Albhabets more than word length: ", wordlength)
         exit(1)
 
-    if (x < 0):
-        print(x, "Albhabets less than 0: ")
+    if alphabetlength < 0:
+        print(alphabetlength, "Albhabets less than 0: ")
         exit(1)
 
-    if (y > w):
-        print(y, "Numbers more than word length: ", w)
+    if numberlength > wordlength:
+        print(numberlength, "Numbers more than word length: ", wordlength)
         exit(1)
 
-    if (y < 0):
-        print(y, "Numbers less than 0: ", y)
+    if numberlength < 0:
+        print(numberlength, "Numbers less than 0: ", numberlength)
         exit(1)
 
-    if (y > w):
-        print(z, "Special chars more than word length: ", w)
+    if numberlength > wordlength:
+        print(specialcharlength, "Special chars more than word length: ", wordlength)
         exit(1)
 
-    if (z < 0):
-        print(z, "Special Chars less than 0: ")
+    if specialcharlength < 0:
+        print(specialcharlength, "Special Chars less than 0: ")
         exit(1)
 
-    if ((x+y+z) != w):
-        print("x = %d, y = %d, z = %d does not add up to w = %d\n" % (x,y,z,w))
+    if (alphabetlength + numberlength + specialcharlength) != wordlength:
+        print("x = %d, y = %d, z = %d does not add up to w = %d\n" % (alphabetlength,numberlength,specialcharlength,wordlength))
         exit(1)
 
-    if (oddcount > 1):
+    if oddcount > 1:
         print("Input is not valid to create a Palindrome")
         print("Error: Cannot create palindrome as more than 1 odd set: ",oddcount)
         exit(1)
 
-    # identify the mid from the arg that has odd value
+    #Identify the mid from the arg that has odd value
     mid=''
-    if ((x%2) == 1):
-        mid="a"
-    if ((y%2) == 1):
-        mid="1"
-    if ((z%2 == 1)):
-        mid="*"
+    if (alphabetlength % 2) == 1:
+        mid = "a"
+    if (numberlength % 2) == 1:
+        mid = "1"
+    if (specialcharlength % 2) == 1:
+        mid = "*"
     #print("mid=",mid)
     
     #Form half string
@@ -67,25 +67,25 @@ def FormPalindrome(w, x, y, z):
     j=0
     k=0
     halfpal=''
-    while (i < (x//2)):
-        halfpal = halfpal + chr(65+i)
+    while i < (alphabetlength // 2):
+        halfpal = halfpal + chr(65 + i)
         i=i+1
-    #print(halfpal)
+    #print("First half of palindrome with aplhabet: ", halfpal)
     
-    while (j < (y//2)):
-        halfpal = halfpal + chr(48+j)
+    while j < (numberlength // 2):
+        halfpal = halfpal + chr(48 + j)
         j=j+1
-    #print(halfpal)
+    #print("First half of palindrome with aplhabet + number: ",halfpal)
     
-    while (k < (z//2)):
-        halfpal = halfpal + chr(33+k)
+    while k < (specialcharlength // 2):
+        halfpal = halfpal + chr(33 + k)
         k=k+1
-    #print(halfpal)
+    #print("First half of palindrome with aplhabet + number + specialchar: "halfpal)
     
     #Form reverse of the half string
     revpal = halfpal[::-1]
     
-    #Form the final string 
+    #Form the final Palindrome string 
     pal = halfpal + mid + revpal
     return(pal)
 
@@ -93,11 +93,11 @@ def FormPalindrome(w, x, y, z):
 # Calling the function
 def main():
 
-    w = int(input("Input word length w:"))
-    x = int(input("Input Alphabet length x:"))
-    y = int(input("Input Number length y:"))
-    z = int(input("Input Special char length z:"))
-    pal_val = FormPalindrome(w, x, y, z)
+    wordlength = int(input("Input word length w:"))
+    alphabetlength = int(input("Input Alphabet length x:"))
+    numberlength = int(input("Input Number length y:"))
+    speciallength = int(input("Input Special char length z:"))
+    pal_val = formpalindrome(wordlength, alphabetlength, numberlength, speciallength)
     if(pal_val):
         print("Palindrome: ", pal_val)
     else:
