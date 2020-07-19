@@ -31,45 +31,45 @@ class Palindrome:
 
         if self.wordlength > maxlength:
             print(self.wordlength, "Word length exceeds max allowed length : ", maxlength)
-            return(False)
+            return(0)
 
-        if self.wordlength < 0:
-            print(self.wordlength, "Word length is less than 0")
-            exit(1)
+        if self.wordlength <= 0:
+            print(self.wordlength, "Word length is less than or equal to 0")
+            return(0)
 
         if self.alphabetlength > self.wordlength:
             print(self.alphabetlength, "Albhabets more than word length: ", self.wordlength)
-            exit(1)
+            return(0)
 
         if self.alphabetlength < 0:
             print(self.alphabetlength, "Albhabets less than 0: ")
-            exit(1)
+            return(0)
 
         if self.numberlength > self.wordlength:
             print(self.numberlength, "Numbers more than word length: ", self.wordlength)
-            exit(1)
+            return(0)
 
         if self.numberlength < 0:
             print(self.numberlength, "Numbers less than 0: ", self.numberlength)
-            exit(1)
+            return(0)
 
         if self.numberlength > self.wordlength:
             print(self.specialcharlength, "Special chars more than word length: ", self.wordlength)
-            exit(1)
+            return(0)
 
         if self.specialcharlength < 0:
             print(self.specialcharlength, "Special Chars less than 0: ")
-            exit(1)
+            return(0)
 
         if (self.alphabetlength + self.numberlength + self.specialcharlength) != self.wordlength:
             print("x = %d, y = %d, z = %d does not add up to w = %d\n" % (
             self.alphabetlength, self.numberlength, self.specialcharlength, self.wordlength))
-            exit(1)
+            return(0)
 
         if oddcount > 1:
             print("Input is not valid to create a Palindrome")
             print("Error: Cannot create palindrome as more than 1 odd set: ", oddcount)
-            exit(1)
+            return(0)
 
         # identify the mid from the arg that has odd value
         mid = ''

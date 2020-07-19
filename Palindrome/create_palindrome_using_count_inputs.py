@@ -15,8 +15,8 @@ def formpalindrome(wordlength, alphabetlength, numberlength, specialcharlength):
         print(wordlength, "Word length exceeds max allowed length : ", maxlength)
         exit(1)
 
-    if wordlength < 0:
-        print(wordlength, "Word length is less than 0")
+    if wordlength <= 0:
+        print(wordlength, "Word length is less than or equal to 0")
         exit(1)
 
     if alphabetlength > wordlength:
@@ -24,7 +24,7 @@ def formpalindrome(wordlength, alphabetlength, numberlength, specialcharlength):
         exit(1)
 
     if alphabetlength < 0:
-        print(alphabetlength, "Albhabets less than 0: ")
+        print(alphabetlength, "Albhabets less than or equal to 0: ")
         exit(1)
 
     if numberlength > wordlength:
@@ -32,7 +32,7 @@ def formpalindrome(wordlength, alphabetlength, numberlength, specialcharlength):
         exit(1)
 
     if numberlength < 0:
-        print(numberlength, "Numbers less than 0: ", numberlength)
+        print(numberlength, "Numbers less than or equal to 0: ", numberlength)
         exit(1)
 
     if numberlength > wordlength:
@@ -40,7 +40,7 @@ def formpalindrome(wordlength, alphabetlength, numberlength, specialcharlength):
         exit(1)
 
     if specialcharlength < 0:
-        print(specialcharlength, "Special Chars less than 0: ")
+        print(specialcharlength, "Special Chars less than or equal to 0: ")
         exit(1)
 
     if (alphabetlength + numberlength + specialcharlength) != wordlength:
